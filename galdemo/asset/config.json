@@ -1,0 +1,13 @@
+{
+  "width": 800,
+  "height": 480,
+  "dialogText": {
+    "font": "20px Arial",
+    "color": "#fff"
+  },
+  "save": {
+    "numPart": "",
+    "numChange": 0,
+    "renderObjFull": {}
+  }
+}
