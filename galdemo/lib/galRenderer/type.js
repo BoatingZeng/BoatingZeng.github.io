@@ -6,10 +6,13 @@
 **/
 galRenderer.type = function(dialogText, text) {
 
-  var speed = 100;
+  //速度都是越小越快的,其实是时间间隔
+  var speed = 50;
   var blink = 500;
   var len = text.length;
   var count = 1;
+
+  boatgal.status.isWaiting = false;
 
   function addOne() {
     if(count < len + 1) {

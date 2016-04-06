@@ -5,7 +5,8 @@
     {"id": "scenario.json", "src": "scenario.json"},
     {"id": "config.json", "src": "config.json"},
     {"id": "customTitle.js", "src": "customTitle.js"},
-    {"id": "bg.png", "src": "bg.png"},
+    {"id": "bg01.png", "src": "bg01.png"},
+    {"id": "bg02.png", "src": "bg02.png"},
     {"id": "ikazuti.png", "src": "ikazuti.png"},
     {"id": "inaduma.png", "src": "inaduma.png"}
   ]
