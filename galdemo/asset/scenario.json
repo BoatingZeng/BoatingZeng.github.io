@@ -1,7 +1,7 @@
 {
   "part0": [
     {
-      "bg": "bg01.png",
+      "bg": "bg01.jpg",
       "bgm": "",
       "figures": [
         {"id": "ikazuti.png", "position": {"x": 0, "y": 0}},
@@ -28,7 +28,7 @@
       "dialog": {"speaker": "电", "speech": "呀呀呀呀！雷酱你去哪里了？"}
     },
     {
-      "bg": "bg02.png",
+      "bg": "bg02.jpg",
       "figures": [
         {"id": "ikazuti.png", "position": {"x": 100, "y": 0}}
       ],
@@ -57,7 +57,7 @@
   ],
   "part2": [
     { 
-      "bg": "bg01.png",
+      "bg": "bg01.jpg",
       "figures": [
           {"id": "inaduma.png", "position": {"x": 300, "y": 0}}
         ],
