@@ -41,10 +41,12 @@ boatgal.beginScenario = function() {
 
   function handleStageClick(evt) {
 
-    if(boatgal.status.isWaiting) {
-
-      if (evt.target.gal_targetPart) {
-
+    if(boatgal.status.isTypeEnd && boatgal.status.isEffectEnd) {
+      if (readNextChange()) {
+        galRenderer.render(boatgal.status.renderObjDiff);
+      }
+      else if (evt.target.gal_targetPart) {
+        boatgal.status.isChoosing = false;
         var targetPart = evt.target.gal_targetPart;
 
         boatgal.status.numPart = targetPart;
@@ -53,16 +55,17 @@ boatgal.beginScenario = function() {
 
         stage.removeChild(galRenderer.storage.choiceArea);
 
-        galRenderer.render(boatgal.scenario[targetPart][0]);
+        galRenderer.render(boatgal.status.renderObjFull);
       }
-      else if (readNextChange()) {
-        galRenderer.render(boatgal.status.renderObjDiff);
+      else if (boatgal.status.renderObjFull.branch && !boatgal.status.isChoosing ) {
+        boatgal.status.isChoosing = true;
+        galRenderer.showBranch(boatgal.status.renderObjFull.branch);
       }
     }
   }
 
   /**
-   * 读入下一个change
+   * 读入同一个part内的下一个change
    * 把完整的渲染对象记录到renderObjFull
    * 把change本身记录到renderObjDiff
    * @return {Boolean} 有没有下一个change

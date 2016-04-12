@@ -1,9 +1,9 @@
 /**
  * 处理分支效果
- * @method branch
- * @param {Array} eftname 代指renderObj.effect中的效果描述对象,详细请参考galRenderer/design.md
+ * @method showBranch
+ * @param {Array} choices 剧本中的branch属性
 **/
-galRenderer.effect.branch = function(eftname) {
+galRenderer.showBranch = function(choices) {
 
   var stage = boatgal.stage;
 
@@ -11,7 +11,7 @@ galRenderer.effect.branch = function(eftname) {
   var cw = config.width;
   var ch = config.height;
 
-  var len = eftname.length;
+  var len = choices.length;
 
   var choiceArea = new createjs.Container();
 
@@ -19,16 +19,16 @@ galRenderer.effect.branch = function(eftname) {
 
   for (var i=0; i<len; i++) {
     var box = new createjs.Shape();
-    box.graphics.beginFill('#000').drawRect(cw/3, 50+i*100, cw/3, 50);
+    box.graphics.beginFill('#000').drawRoundRect(cw/3, 50+i*100, cw/3, 50, 25);
     box.alpha = 0.5;
 
     //给形状添加自定义属性
-    box.gal_targetPart = eftname[i].targetPart;
+    box.gal_targetPart = choices[i].targetPart;
 
     var text = new createjs.Text('', config.otherText.font, config.otherText.color);
-    text.text = eftname[i].text;
-    text.x = cw/3;
-    text.y = 50+i*100;
+    text.text = choices[i].text;
+    text.x = cw/3 + 20;
+    text.y = 50+i*100 + 10;
 
     choiceArea.addChild(box);
     choiceArea.addChild(text);

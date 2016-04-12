@@ -8,7 +8,9 @@
 galRenderer.render = function(renderObj) {
   
   if (renderObj.bg) {
-    galRenderer.storage.bgBitmap.image = boatgal.queue.getResult(renderObj.bg);
+    if (!renderObj.bg.isEffect) {
+      galRenderer.storage.bgBitmap.image = boatgal.queue.getResult(renderObj.bg.id);
+    }
   }
 
   if (renderObj.figures) {
@@ -18,8 +20,14 @@ galRenderer.render = function(renderObj) {
 
     for(var i=0; i<figures.length; i++) {
       var figure = new createjs.Bitmap(boatgal.queue.getResult(figures[i].id));
+      figure.name = figures[i].id;
       figure.x = figures[i].position.x;
       figure.y = figures[i].position.y;
+
+      if (figures[i].isHide) {
+        figure.alpha = 0;
+      }
+
       figureBox.addChild(figure);
     }
   }
@@ -30,9 +38,29 @@ galRenderer.render = function(renderObj) {
   }
 
   if (renderObj.effect) {
-    for (var eftname in renderObj.effect) {
+    boatgal.status.isEffectEnd = false;
+    var effectNum = renderObj.effect.length;
+
+    for (var j=0; j<effectNum; j++) {
+
+      var eftname = renderObj.effect[j].name;
       var eftfun = galRenderer.effect[eftname];
-      eftfun(renderObj.effect[eftname]);
+      var wait = renderObj.effect[j].wait;
+      var attribute = renderObj.effect[j].attribute;
+      
+      setTimeout(eftfun, wait, attribute, setFlag);
     }
+  }
+  else {
+    boatgal.status.isEffectEnd = true;
+  }
+
+  function setFlag() {
+    effectNum -= 1;
+    if (effectNum === 0) {
+      boatgal.status.isEffectEnd = true;
+      console.log('isEffectEnd = ' + boatgal.status.isEffectEnd);
+    }
+    
   }
 };

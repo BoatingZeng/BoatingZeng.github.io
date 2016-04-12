@@ -1,24 +1,42 @@
 #效果
-关于效果和效果器的设计。效果描述指在剧本文件中的描述方法。效果器指具体的实现方法。效果在剧本中命名为`effect`。效果描述即为`effect`对象的属性。效果器函数储存在`galRenderer.effect`中。
+一个`change`开始时,记作0时刻,每一个效果都有一个起始的时刻,这样就控制了效果的顺序。效果发生的时刻叫做`wait`。
 
-处理效果的过程：
-
-1. 按`effect`中的属性的顺序处理效果。
-2. 按效果名调用效果器函数,即效果器函数名和效果名相同。
-3. 把效果描述对象作为参数调用效果器函数。
-
-##分支效果
-用于在一个`part`结束时处理分支。
-
-###效果描述
-1. `branch {Array}`: 描述分支选项，只在`part`的最后一个`change`有该效果。是`choice`的集合。
-
-2. `choice {Object}`: 包含要显示的文字和要跳转至的part。
+剧本中,`effect`属性是一个数组,数组元素形式如下:
 ```
-   {
-    text {String}: 在出现分支选项时，选项上显示的文字。
-    targetPart {String}: 要跳转至的目标part。
-   }
+{
+  name {String}: 效果的名字
+  wait {Number}: 效果发生的时刻
+  attribute {Object}: 对效果的描述,会作为效果器函数的第一个参数
+}
 ```
 
-###效果器
+##效果器函数
+```
+  /**
+   * @method
+   * @param {Object} attribute 效果的特性
+   * @param {Function} fn 该效果过程完成后执行的函数
+  **/
+```
+
+在`render`函数中通过`setTimeout`调用效果器函数,并且传入用于控制状态标记的函数作为`fn`。
+
+##各种效果的attribute
+下面是每种效果的`attribute`的描述。
+
+###fade(figure的淡出淡入效果)
+```
+  {
+    isFadein {Boolean}: 淡入还是淡出
+    duration {Number}: (fade)效果的持续时间
+    target {String}: 目标图片的id,这里专门指figure(背景图片用专门的切换效果)
+  }
+```
+
+###bgSwitch(bg的切换效果)
+```
+  {
+    method {String}: 具体的切换效果
+  }
+```
+
