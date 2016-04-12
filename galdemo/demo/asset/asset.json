@@ -1,5 +1,5 @@
 {
-  "path": "../asset/",
+  "path": "asset/",
   "manifest": [
     {"id": "asset.json", "src": "asset.json"},
     {"id": "scenario.json", "src": "scenario.json"},

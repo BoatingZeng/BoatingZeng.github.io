@@ -1,0 +1,87 @@
+{
+  "part0": [
+    {
+      "bg": {"id": "bg01.jpg", "isEffect": false},
+      "bgm": "",
+      "figures": [
+        {"id": "ikazuti.png", "position": {"x": 0, "y": 0}},
+        {"id": "inaduma.png", "position": {"x": 300, "y": 0}}
+      ],
+      "dialog": {"speaker": "雷和电", "speech": "大家好。这是boatgal demo。\n虽然素材比较少。\n但是会把现有功能都展示一下。"}
+    },
+    {
+      "figures": [
+        {"id": "ikazuti.png", "position": {"x": 0, "y": 0}},
+        {"id": "inaduma.png", "position": {"x": 300, "y": 0}}
+      ],
+      "dialog": {"speaker": "电", "speech": "呀呀呀呀！雷酱你去哪里了？"},
+      "effect": [
+        {"name": "fade", "wait": 0, "attribute": {"isFadein": false, "duration": 200, "target": "ikazuti.png"}}
+      ]
+    },
+    {
+      "bg": {"id": "bg02.jpg", "isEffect": true},
+      "figures": [
+        {"id": "ikazuti.png", "position": {"x": 100, "y": 0}, "isHide": true}
+      ],
+      "dialog": {"speaker": "雷", "speech": "我在这里呢。背景也换了。\n刚才展示了人物图片的淡出淡入效果。还有背景图片的切换效果。\n(背景图片的切换效果有多种，虽然看起来还不太顺眼。>_<)"},
+      "effect": [
+        {"name": "bgSwitch", "wait": 0, "attribute": {"method": "blur"}},
+        {"name": "fade", "wait": 800, "attribute": {"isFadein": true, "duration": 200, "target": "ikazuti.png"}}
+      ]
+    },
+    {
+      "dialog": {"speaker": "雷", "speech": "电酱你也过来呀。"},
+      "branch": [
+        {"text": "过去", "targetPart": "part1"},
+        {"text": "不过", "targetPart": "part2"}
+      ]
+    }
+  ],
+  "part1": [
+    {
+      "figures": [
+          {"id": "ikazuti.png", "position": {"x": 100, "y": 0}},
+          {"id": "inaduma.png", "position": {"x": 300, "y": 0}}
+        ],
+      "dialog": {"speaker": "电", "speech": "我过来了。"}
+    },
+    {
+      "dialog": {"speaker": "电", "speech": "怎么我没有淡入效果？"}
+    },
+    {
+      "dialog": {"speaker": "雷", "speech": "因为剧本描述中没有添加啦。\n默认是直接出现的。"},
+      "branch": [
+        {"text": "重新开始", "targetPart": "part0"}
+      ]
+    }
+  ],
+  "part2": [
+    { 
+      "bg": {"id": "bg01.jpg", "isEffect": true},
+      "figures": [
+          {"id": "inaduma.png", "position": {"x": 300, "y": 0}}
+      ],
+      "dialog": {"speaker": "电", "speech": "你还是回来吧，我有点方。"},
+      "effect": [
+        {"name": "bgSwitch", "wait": 0, "attribute": {"method": "blur"}}
+      ]
+    },
+    {
+      "figures": [
+        {"id": "ikazuti.png", "position": {"x": 100, "y": 0}},
+        {"id": "inaduma.png", "position": {"x": 300, "y": 0}}
+      ],
+      "dialog": {"speaker": "雷", "speech": "好吧，我回来了。"},
+      "effect": [
+        {"name": "fade", "wait": 0, "attribute": {"isFadein": true, "duration": 200, "target": "ikazuti.png"}}
+      ]
+    },
+    {
+      "dialog": {"speaker": "雷", "speech": "因为写剧本很麻烦的，所以就到此为止了。"},
+      "branch": [
+        {"text": "重新开始", "targetPart": "part0"}
+      ]
+    }
+  ]
+}
