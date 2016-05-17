@@ -26,7 +26,7 @@
       ],
       "dialog": {"speaker": "雷", "speech": "我在这里呢。背景也换了。\n刚才展示了人物图片的淡出淡入效果。还有背景图片的切换效果。\n(背景图片的切换效果有多种，虽然看起来还不太顺眼。>_<)"},
       "effect": [
-        {"name": "bgSwitch", "wait": 0, "attribute": {"method": "blur"}},
+        {"name": "bgSwitch", "wait": 0, "attribute": {"method": "fade"}},
         {"name": "fade", "wait": 800, "attribute": {"isFadein": true, "duration": 200, "target": "ikazuti.png"}}
       ]
     },
@@ -64,7 +64,7 @@
       ],
       "dialog": {"speaker": "电", "speech": "你还是回来吧，我有点方。"},
       "effect": [
-        {"name": "bgSwitch", "wait": 0, "attribute": {"method": "blur"}}
+        {"name": "bgSwitch", "wait": 0, "attribute": {"method": "fade"}}
       ]
     },
     {
